@@ -1,0 +1,32 @@
+{
+  "name": "facebook-conversion-api",
+  "version": "1.0.0",
+  "description": "Facebook Conversion API Wrapper for Node.js",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RivercodeAB/facebook-conversion-api.git"
+  },
+  "author": "Rivercode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RivercodeAB/facebook-conversion-api/issues"
+  },
+  "homepage": "https://github.com/RivercodeAB/facebook-conversion-api#readme",
+  "dependencies": {
+    "facebook-nodejs-business-sdk": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.1",
+    "typescript": "^4.3.5"
+  }
+}
