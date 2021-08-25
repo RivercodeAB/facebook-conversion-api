@@ -2,7 +2,7 @@
   "name": "facebook-conversion-api",
   "version": "1.0.2",
   "description": "Facebook Conversion API Wrapper for Node.js",
-  "main": "src/dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
