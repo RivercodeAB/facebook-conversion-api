@@ -15,6 +15,8 @@ const FacebookConversionAPI = require('facebook-conversion-api');
 const ConversionAPI = new FacebookConversionAPI(
   'accessToken',
   'pixelId',
+  'emails': ['email1', 'email2'], // or null
+  'phones': ['phone1', 'phone2'], // or null
   'clientIpAddress',
   'clientUserAgent',
   'fbp',
@@ -36,8 +38,14 @@ ConversionAPI.addProduct(productSku, quantity);
 ConversionAPI.sendEvent('AddToCart', sourceUrl);
 ```
 
+### Initiate Checkout Event
+```bash
+ConversionAPI.addProduct(productSku, quantity);
+ConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { currency: 'USD', value: 1000 });
+```
+
 ### Purchase Event
 ```bash
 ConversionAPI.addProduct(productSku, quantity);
-ConversionAPI.sendEvent('Purchase', sourceUrl, { currency: 'SEK', value: 1000 });
+ConversionAPI.sendEvent('Purchase', sourceUrl, { currency: 'USD', value: 1000 });
 ```

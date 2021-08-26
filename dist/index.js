@@ -13,23 +13,32 @@ class FacebookConversionAPI {
      *
      * @param accessToken
      * @param pixelId
+     * @param emails
+     * @param phones
      * @param clientIpAddress
      * @param clientUserAgent
      * @param fbp
      * @param fbc
+     * @param debug
      */
-    constructor(accessToken, pixelId, clientIpAddress, clientUserAgent, fbp, fbc) {
+    constructor(accessToken, pixelId, emails, phones, clientIpAddress, clientUserAgent, fbp, fbc, debug = false) {
         _FacebookConversionAPI_instances.add(this);
         this.accessToken = accessToken;
         this.pixelId = pixelId;
         this.fbp = fbp;
         this.fbc = fbc;
+        this.debug = debug;
         this.userData = (new bizSdk.UserData())
+            .setEmails(emails)
+            .setPhones(phones)
             .setClientIpAddress(clientIpAddress)
             .setClientUserAgent(clientUserAgent)
-            .setFbp(null)
-            .setFbc(null);
+            .setFbp(fbp)
+            .setFbc(fbc);
         this.contents = [];
+        if (this.debug) {
+            console.log(`User Data: ${JSON.stringify(this.userData)}`);
+        }
     }
     /**
      * Add product to contents array.
@@ -39,6 +48,9 @@ class FacebookConversionAPI {
      */
     addProduct(sku, quantity) {
         this.contents.push((new bizSdk.Content()).setId(sku).setQuantity(quantity));
+        if (this.debug) {
+            console.log(`Add To Cart: ${JSON.stringify(this.contents)}`);
+        }
     }
     /**
      * Send event to Facebook Conversion API and clear contents array after event is fired.
@@ -52,6 +64,9 @@ class FacebookConversionAPI {
             .setEvents([__classPrivateFieldGet(this, _FacebookConversionAPI_instances, "m", _FacebookConversionAPI_getEventData).call(this, eventName, sourceUrl, params)]);
         this.contents = [];
         eventRequest.execute().then((response) => response, (error) => error);
+        if (this.debug) {
+            console.log(`Event Request: ${JSON.stringify(eventRequest)}`);
+        }
     }
 }
 _FacebookConversionAPI_instances = new WeakSet(), _FacebookConversionAPI_getEventData = function _FacebookConversionAPI_getEventData(eventName, sourceUrl, params) {

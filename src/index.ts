@@ -15,30 +15,43 @@ class FacebookConversionAPI {
 
   contents: any;
 
+  debug: boolean;
+
   /**
    * Constructor.
    *
    * @param accessToken
    * @param pixelId
+   * @param emails
+   * @param phones
    * @param clientIpAddress
    * @param clientUserAgent
    * @param fbp
    * @param fbc
+   * @param debug
    */
   constructor(
-    accessToken: string, pixelId: string,
-    clientIpAddress: string, clientUserAgent: string, fbp: string, fbc: string,
+    accessToken: string, pixelId: string, emails: Array<string>|null,
+    phones: Array<string>|null, clientIpAddress: string, clientUserAgent: string,
+    fbp: string, fbc: string, debug: boolean = false,
   ) {
     this.accessToken = accessToken;
     this.pixelId = pixelId;
     this.fbp = fbp;
     this.fbc = fbc;
+    this.debug = debug;
     this.userData = (new bizSdk.UserData())
+      .setEmails(emails)
+      .setPhones(phones)
       .setClientIpAddress(clientIpAddress)
       .setClientUserAgent(clientUserAgent)
-      .setFbp(null)
-      .setFbc(null);
+      .setFbp(fbp)
+      .setFbc(fbc);
     this.contents = [];
+
+    if (this.debug) {
+      console.log(`User Data: ${JSON.stringify(this.userData)}`);
+    }
   }
 
   /**
@@ -47,8 +60,12 @@ class FacebookConversionAPI {
    * @param sku
    * @param quantity
    */
-  addProduct(sku: number, quantity: number): any {
+  addProduct(sku: number, quantity: number): void {
     this.contents.push((new bizSdk.Content()).setId(sku).setQuantity(quantity));
+
+    if (this.debug) {
+      console.log(`Add To Cart: ${JSON.stringify(this.contents)}`);
+    }
   }
 
   /**
@@ -60,7 +77,7 @@ class FacebookConversionAPI {
    */
   sendEvent(
     eventName: string, sourceUrl: string, params?: { currency?: string, value?: number },
-  ): any {
+  ): void {
     const eventRequest = (new bizSdk.EventRequest(this.accessToken, this.pixelId))
       .setEvents([this.#getEventData(eventName, sourceUrl, params)]);
 
@@ -70,6 +87,10 @@ class FacebookConversionAPI {
       (response: any) => response,
       (error: any) => error,
     );
+
+    if (this.debug) {
+      console.log(`Event Request: ${JSON.stringify(eventRequest)}`);
+    }
   }
 
   /**
