@@ -21,6 +21,7 @@ const ConversionAPI = new FacebookConversionAPI(
   'clientUserAgent',
   'fbp',
   'fpc',
+  'debug', // default to false
 );
 ```
 
