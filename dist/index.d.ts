@@ -1,4 +1,3 @@
-export const bizSdk: any;
 declare class FacebookConversionAPI {
     #private;
     accessToken: string;
@@ -41,3 +40,4 @@ declare class FacebookConversionAPI {
         value?: number;
     }): void;
 }
+export default FacebookConversionAPI;

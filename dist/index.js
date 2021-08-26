@@ -6,6 +6,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _FacebookConversionAPI_instances, _FacebookConversionAPI_getEventData;
+Object.defineProperty(exports, "__esModule", { value: true });
 const bizSdk = require('facebook-nodejs-business-sdk');
 class FacebookConversionAPI {
     /**
@@ -82,4 +83,4 @@ _FacebookConversionAPI_instances = new WeakSet(), _FacebookConversionAPI_getEven
         .setEventSourceUrl(sourceUrl)
         .setActionSource('website');
 };
-module.exports = FacebookConversionAPI;
+exports.default = FacebookConversionAPI;

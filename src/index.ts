@@ -120,4 +120,4 @@ class FacebookConversionAPI {
   }
 }
 
-module.exports = FacebookConversionAPI;
+export default FacebookConversionAPI;
