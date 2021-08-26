@@ -9,7 +9,7 @@ npm install https://github.com/RivercodeAB/facebook-conversion-api
 ```
 
 ## Initiate Facebook Conversion API
-```bash
+```node
 // ES6 import or TypeScript
 import FacebookConversionAPI from 'facebook-conversion-api';
 // CommonJS
@@ -31,25 +31,25 @@ const ConversionAPI = new FacebookConversionAPI(
 Read more here on how you can get your [access token](https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#access-token) and [fbp/fpc identifiers](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/).
 
 ### ViewContent Event
-```bash
+```node
 ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('ViewContent', sourceUrl);
 ```
 
 ### Add To Cart Event
-```bash
+```node
 ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('AddToCart', sourceUrl);
 ```
 
 ### Initiate Checkout Event
-```bash
+```node
 ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { currency: 'USD', value: 1000 });
 ```
 
 ### Purchase Event
-```bash
+```node
 ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('Purchase', sourceUrl, { currency: 'USD', value: 1000 });
 ```
