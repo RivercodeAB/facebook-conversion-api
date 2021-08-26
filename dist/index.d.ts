@@ -27,7 +27,7 @@ declare class FacebookConversionAPI {
      * @param sku
      * @param quantity
      */
-    addProduct(sku: number, quantity: number): void;
+    addProduct(sku: string, quantity: number): void;
     /**
      * Send event to Facebook Conversion API and clear contents array after event is fired.
      *

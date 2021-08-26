@@ -32,24 +32,24 @@ Read more here on how you can get your [access token](https://developers.faceboo
 
 ### ViewContent Event
 ```bash
-ConversionAPI.addProduct(productSku, quantity);
+ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('ViewContent', sourceUrl);
 ```
 
 ### Add To Cart Event
 ```bash
-ConversionAPI.addProduct(productSku, quantity);
+ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('AddToCart', sourceUrl);
 ```
 
 ### Initiate Checkout Event
 ```bash
-ConversionAPI.addProduct(productSku, quantity);
+ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { currency: 'USD', value: 1000 });
 ```
 
 ### Purchase Event
 ```bash
-ConversionAPI.addProduct(productSku, quantity);
+ConversionAPI.addProduct('productSku', quantity);
 ConversionAPI.sendEvent('Purchase', sourceUrl, { currency: 'USD', value: 1000 });
 ```

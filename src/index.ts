@@ -60,7 +60,7 @@ class FacebookConversionAPI {
    * @param sku
    * @param quantity
    */
-  addProduct(sku: number, quantity: number): void {
+  addProduct(sku: string, quantity: number): void {
     this.contents.push((new bizSdk.Content()).setId(sku).setQuantity(quantity));
 
     if (this.debug) {
