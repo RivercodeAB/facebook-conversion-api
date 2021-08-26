@@ -15,8 +15,8 @@ const FacebookConversionAPI = require('facebook-conversion-api');
 const ConversionAPI = new FacebookConversionAPI(
   'accessToken',
   'pixelId',
-  'emails': ['email1', 'email2'], // or null
-  'phones': ['phone1', 'phone2'], // or null
+  ['email1', 'email2'], // or null
+  ['phone1', 'phone2'], // or null
   'clientIpAddress',
   'clientUserAgent',
   'fbp',
