@@ -10,7 +10,10 @@ npm install https://github.com/RivercodeAB/facebook-conversion-api
 
 ## Initiate Facebook Conversion API
 ```bash
+// ES6 import or TypeScript
 import FacebookConversionAPI from 'facebook-conversion-api';
+// CommonJS
+const FacebookConversionAPI = require('facebook-conversion-api').default;
 
 const ConversionAPI = new FacebookConversionAPI(
   'accessToken',
