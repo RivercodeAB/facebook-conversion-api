@@ -5,7 +5,7 @@ Facebook Conversion API
 ## Install
 
 ```bash
-npm install https://github.com/RivercodeAB/facebook-conversion-api
+npm install @rivercode/facebook-conversion-api
 ```
 
 ## Initiate Facebook Conversion API
