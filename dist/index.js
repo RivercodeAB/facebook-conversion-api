@@ -38,7 +38,7 @@ class FacebookConversionAPI {
             .setFbc(fbc);
         this.contents = [];
         if (this.debug) {
-            console.log(`User Data: ${JSON.stringify(this.userData)}`);
+            console.log(`User Data: ${JSON.stringify(this.userData)}\n`);
         }
     }
     /**
@@ -50,7 +50,7 @@ class FacebookConversionAPI {
     addProduct(sku, quantity) {
         this.contents.push((new bizSdk.Content()).setId(sku).setQuantity(quantity));
         if (this.debug) {
-            console.log(`Add To Cart: ${JSON.stringify(this.contents)}`);
+            console.log(`Add To Cart: ${JSON.stringify(this.contents)}\n`);
         }
     }
     /**
@@ -66,7 +66,7 @@ class FacebookConversionAPI {
         this.contents = [];
         eventRequest.execute().then((response) => response, (error) => error);
         if (this.debug) {
-            console.log(`Event Request: ${JSON.stringify(eventRequest)}`);
+            console.log(`Event Request: ${JSON.stringify(eventRequest)}\n`);
         }
     }
 }
