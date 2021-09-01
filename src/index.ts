@@ -76,7 +76,7 @@ class FacebookConversionAPI {
    * @param params
    */
   sendEvent(
-    eventName: string, sourceUrl: string, params?: { currency?: string, value?: number },
+    eventName: string, sourceUrl: string, params?: { value?: number, currency?: string },
   ): void {
     const eventRequest = (new bizSdk.EventRequest(this.accessToken, this.pixelId))
       .setEvents([this.#getEventData(eventName, sourceUrl, params)]);
@@ -103,7 +103,7 @@ class FacebookConversionAPI {
   #getEventData(
     eventName: string,
     sourceUrl: string,
-    params?: { currency?: string, value?: number },
+    params?: { value?: number, currency?: string },
   ): any {
     const currentTimestamp = Math.floor(new Date() as any / 1000);
 

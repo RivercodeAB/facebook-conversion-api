@@ -45,11 +45,11 @@ ConversionAPI.sendEvent('AddToCart', sourceUrl);
 ### Initiate Checkout Event
 ```node
 ConversionAPI.addProduct('productSku', quantity);
-ConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { currency: 'USD', value: 1000 });
+ConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { value: 1000, currency: 'USD' });
 ```
 
 ### Purchase Event
 ```node
 ConversionAPI.addProduct('productSku', quantity);
-ConversionAPI.sendEvent('Purchase', sourceUrl, { currency: 'USD', value: 1000 });
+ConversionAPI.sendEvent('Purchase', sourceUrl, { value: 1000, currency: 'USD' });
 ```

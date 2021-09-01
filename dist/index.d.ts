@@ -36,8 +36,8 @@ declare class FacebookConversionAPI {
      * @param params
      */
     sendEvent(eventName: string, sourceUrl: string, params?: {
-        currency?: string;
         value?: number;
+        currency?: string;
     }): void;
 }
 export default FacebookConversionAPI;
