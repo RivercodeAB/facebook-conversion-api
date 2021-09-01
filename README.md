@@ -11,11 +11,11 @@ npm install @rivercode/facebook-conversion-api
 ## Initiate Facebook Conversion API
 ```node
 // ES6 import or TypeScript
-import FacebookConversionAPI from 'facebook-conversion-api';
+import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
 // CommonJS
-const FacebookConversionAPI = require('facebook-conversion-api').default;
+const FacebookConversionAPI = require('@rivercode/facebook-conversion-api').default;
 
-const ConversionAPI = new FacebookConversionAPI(
+const FBConversionAPI = new FacebookConversionAPI(
   'accessToken',
   'pixelId',
   ['email1', 'email2'], // or null
@@ -32,24 +32,24 @@ Read more here on how you can get your [access token](https://developers.faceboo
 
 ### ViewContent Event
 ```node
-ConversionAPI.addProduct('productSku', quantity);
-ConversionAPI.sendEvent('ViewContent', sourceUrl);
+FBConversionAPI.addProduct('productSku', quantity);
+FBConversionAPI.sendEvent('ViewContent', sourceUrl);
 ```
 
 ### Add To Cart Event
 ```node
-ConversionAPI.addProduct('productSku', quantity);
-ConversionAPI.sendEvent('AddToCart', sourceUrl);
+FBConversionAPI.addProduct('productSku', quantity);
+FBConversionAPI.sendEvent('AddToCart', sourceUrl);
 ```
 
 ### Initiate Checkout Event
 ```node
-ConversionAPI.addProduct('productSku', quantity);
-ConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { value: 1000, currency: 'USD' });
+FBConversionAPI.addProduct('productSku', quantity);
+FBConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { value: 1000, currency: 'USD' });
 ```
 
 ### Purchase Event
 ```node
-ConversionAPI.addProduct('productSku', quantity);
-ConversionAPI.sendEvent('Purchase', sourceUrl, { value: 1000, currency: 'USD' });
+FBConversionAPI.addProduct('productSku', quantity);
+FBConversionAPI.sendEvent('Purchase', sourceUrl, { value: 1000, currency: 'USD' });
 ```
