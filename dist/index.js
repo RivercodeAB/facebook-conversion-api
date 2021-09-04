@@ -1,13 +1,16 @@
 "use strict";
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var _FacebookConversionAPI_instances, _FacebookConversionAPI_getEventData;
 Object.defineProperty(exports, "__esModule", { value: true });
-const bizSdk = require('facebook-nodejs-business-sdk');
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+const facebook_nodejs_business_sdk_1 = __importDefault(require("facebook-nodejs-business-sdk"));
 class FacebookConversionAPI {
     /**
      * Constructor.
@@ -29,7 +32,7 @@ class FacebookConversionAPI {
         this.fbp = fbp;
         this.fbc = fbc;
         this.debug = debug;
-        this.userData = (new bizSdk.UserData())
+        this.userData = (new facebook_nodejs_business_sdk_1.default.UserData())
             .setEmails(emails)
             .setPhones(phones)
             .setClientIpAddress(clientIpAddress)
@@ -48,7 +51,7 @@ class FacebookConversionAPI {
      * @param quantity
      */
     addProduct(sku, quantity) {
-        this.contents.push((new bizSdk.Content()).setId(sku).setQuantity(quantity));
+        this.contents.push((new facebook_nodejs_business_sdk_1.default.Content()).setId(sku).setQuantity(quantity));
         if (this.debug) {
             console.log(`Add To Cart: ${JSON.stringify(this.contents)}\n`);
         }
@@ -61,7 +64,7 @@ class FacebookConversionAPI {
      * @param params
      */
     sendEvent(eventName, sourceUrl, params) {
-        const eventRequest = (new bizSdk.EventRequest(this.accessToken, this.pixelId))
+        const eventRequest = (new facebook_nodejs_business_sdk_1.default.EventRequest(this.accessToken, this.pixelId))
             .setEvents([__classPrivateFieldGet(this, _FacebookConversionAPI_instances, "m", _FacebookConversionAPI_getEventData).call(this, eventName, sourceUrl, params)]);
         this.contents = [];
         eventRequest.execute().then((response) => response, (error) => error);
@@ -70,16 +73,17 @@ class FacebookConversionAPI {
         }
     }
 }
-_FacebookConversionAPI_instances = new WeakSet(), _FacebookConversionAPI_getEventData = function _FacebookConversionAPI_getEventData(eventName, sourceUrl, params) {
+_FacebookConversionAPI_instances = new WeakSet(), _FacebookConversionAPI_getEventData = function _FacebookConversionAPI_getEventData(eventName, sourceUrl, purchaseData, customData) {
     const currentTimestamp = Math.floor(new Date() / 1000);
-    return (new bizSdk.ServerEvent())
+    return (new facebook_nodejs_business_sdk_1.default.ServerEvent())
         .setEventName(eventName)
         .setEventTime(currentTimestamp)
+        .setEventId(customData === null || customData === void 0 ? void 0 : customData.eventId)
         .setUserData(this.userData)
-        .setCustomData((new bizSdk.CustomData())
+        .setCustomData((new facebook_nodejs_business_sdk_1.default.CustomData())
         .setContents(this.contents)
-        .setCurrency(params === null || params === void 0 ? void 0 : params.currency)
-        .setValue(params === null || params === void 0 ? void 0 : params.value))
+        .setCurrency(purchaseData === null || purchaseData === void 0 ? void 0 : purchaseData.currency)
+        .setValue(purchaseData === null || purchaseData === void 0 ? void 0 : purchaseData.value))
         .setEventSourceUrl(sourceUrl)
         .setActionSource('website');
 };
