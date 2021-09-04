@@ -98,20 +98,20 @@ class FacebookConversionAPI {
    * @param eventName
    * @param sourceUrl
    * @param purchaseData
-   * @param customData
+   * @param eventData
    */
   #getEventData(
     eventName: string,
     sourceUrl: string,
     purchaseData?: { value?: number, currency?: string },
-    customData?: { eventId?: string },
+    eventData?: { eventId?: string },
   ): any {
     const currentTimestamp = Math.floor(new Date() as any / 1000);
 
     return (new bizSdk.ServerEvent())
       .setEventName(eventName)
       .setEventTime(currentTimestamp)
-      .setEventId(customData?.eventId)
+      .setEventId(eventData?.eventId)
       .setUserData(this.userData)
       .setCustomData((new bizSdk.CustomData())
         .setContents(this.contents)

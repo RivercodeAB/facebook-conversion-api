@@ -73,12 +73,12 @@ class FacebookConversionAPI {
         }
     }
 }
-_FacebookConversionAPI_instances = new WeakSet(), _FacebookConversionAPI_getEventData = function _FacebookConversionAPI_getEventData(eventName, sourceUrl, purchaseData, customData) {
+_FacebookConversionAPI_instances = new WeakSet(), _FacebookConversionAPI_getEventData = function _FacebookConversionAPI_getEventData(eventName, sourceUrl, purchaseData, eventData) {
     const currentTimestamp = Math.floor(new Date() / 1000);
     return (new facebook_nodejs_business_sdk_1.default.ServerEvent())
         .setEventName(eventName)
         .setEventTime(currentTimestamp)
-        .setEventId(customData === null || customData === void 0 ? void 0 : customData.eventId)
+        .setEventId(eventData === null || eventData === void 0 ? void 0 : eventData.eventId)
         .setUserData(this.userData)
         .setCustomData((new facebook_nodejs_business_sdk_1.default.CustomData())
         .setContents(this.contents)
