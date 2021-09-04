@@ -33,11 +33,14 @@ declare class FacebookConversionAPI {
      *
      * @param eventName
      * @param sourceUrl
-     * @param params
+     * @param purchaseData
+     * @param eventData
      */
-    sendEvent(eventName: string, sourceUrl: string, params?: {
+    sendEvent(eventName: string, sourceUrl: string, purchaseData?: {
         value?: number;
         currency?: string;
+    }, eventData?: {
+        eventId?: string;
     }): void;
 }
 export default FacebookConversionAPI;

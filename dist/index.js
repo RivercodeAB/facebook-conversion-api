@@ -61,11 +61,12 @@ class FacebookConversionAPI {
      *
      * @param eventName
      * @param sourceUrl
-     * @param params
+     * @param purchaseData
+     * @param eventData
      */
-    sendEvent(eventName, sourceUrl, params) {
+    sendEvent(eventName, sourceUrl, purchaseData, eventData) {
         const eventRequest = (new facebook_nodejs_business_sdk_1.default.EventRequest(this.accessToken, this.pixelId))
-            .setEvents([__classPrivateFieldGet(this, _FacebookConversionAPI_instances, "m", _FacebookConversionAPI_getEventData).call(this, eventName, sourceUrl, params)]);
+            .setEvents([__classPrivateFieldGet(this, _FacebookConversionAPI_instances, "m", _FacebookConversionAPI_getEventData).call(this, eventName, sourceUrl, purchaseData, eventData)]);
         this.contents = [];
         eventRequest.execute().then((response) => response, (error) => error);
         if (this.debug) {
