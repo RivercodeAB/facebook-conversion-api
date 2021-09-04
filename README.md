@@ -18,8 +18,8 @@ const FacebookConversionAPI = require('@rivercode/facebook-conversion-api').defa
 const FBConversionAPI = new FacebookConversionAPI(
   'accessToken',
   'pixelId',
-  ['email1', 'email2'], // or null
-  ['phone1', 'phone2'], // or null
+  ['email1', 'email2'], // optional
+  ['phone1', 'phone2'], // optional
   'clientIpAddress',
   'clientUserAgent',
   'fbp',
@@ -33,23 +33,23 @@ Read more here on how you can get your [access token](https://developers.faceboo
 ### ViewContent Event
 ```node
 FBConversionAPI.addProduct('productSku', quantity);
-FBConversionAPI.sendEvent('ViewContent', sourceUrl);
+FBConversionAPI.sendEvent('ViewContent', sourceUrl, { value: 1000, currency: 'USD' }, { eventId: 'eventId' });
 ```
 
 ### Add To Cart Event
 ```node
 FBConversionAPI.addProduct('productSku', quantity);
-FBConversionAPI.sendEvent('AddToCart', sourceUrl);
+FBConversionAPI.sendEvent('AddToCart', sourceUrl, { value: 1000, currency: 'USD' }, { eventId: 'eventId' });
 ```
 
 ### Initiate Checkout Event
 ```node
 FBConversionAPI.addProduct('productSku', quantity);
-FBConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { value: 1000, currency: 'USD' });
+FBConversionAPI.sendEvent('InitiateCheckout', sourceUrl, { value: 1000, currency: 'USD' }, { eventId: 'eventId' });
 ```
 
 ### Purchase Event
 ```node
 FBConversionAPI.addProduct('productSku', quantity);
-FBConversionAPI.sendEvent('Purchase', sourceUrl, { value: 1000, currency: 'USD' });
+FBConversionAPI.sendEvent('Purchase', sourceUrl, { value: 1000, currency: 'USD' }, { eventId: 'eventId' });
 ```

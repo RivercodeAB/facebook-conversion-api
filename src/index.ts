@@ -1,6 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-
-const bizSdk = require('facebook-nodejs-business-sdk');
+import bizSdk from 'facebook-nodejs-business-sdk';
 
 class FacebookConversionAPI {
   accessToken: string;
@@ -98,23 +97,26 @@ class FacebookConversionAPI {
    *
    * @param eventName
    * @param sourceUrl
-   * @param params
+   * @param purchaseData
+   * @param eventData
    */
   #getEventData(
     eventName: string,
     sourceUrl: string,
-    params?: { value?: number, currency?: string },
+    purchaseData?: { value?: number, currency?: string },
+    eventData?: { eventId?: string },
   ): any {
     const currentTimestamp = Math.floor(new Date() as any / 1000);
 
     return (new bizSdk.ServerEvent())
       .setEventName(eventName)
       .setEventTime(currentTimestamp)
+      .setEventId(eventData?.eventId)
       .setUserData(this.userData)
       .setCustomData((new bizSdk.CustomData())
         .setContents(this.contents)
-        .setCurrency(params?.currency)
-        .setValue(params?.value))
+        .setCurrency(purchaseData?.currency)
+        .setValue(purchaseData?.value))
       .setEventSourceUrl(sourceUrl)
       .setActionSource('website');
   }
