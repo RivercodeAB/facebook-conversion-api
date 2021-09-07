@@ -1,5 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-import bizSdk from 'facebook-nodejs-business-sdk';
+const bizSdk = require('facebook-nodejs-business-sdk');
 
 class FacebookConversionAPI {
   accessToken: string;
