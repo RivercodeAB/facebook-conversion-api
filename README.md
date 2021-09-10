@@ -18,12 +18,12 @@ const FacebookConversionAPI = require('@rivercode/facebook-conversion-api').defa
 const FBConversionAPI = new FacebookConversionAPI(
   'accessToken',
   'pixelId',
-  ['email1', 'email2'], // optional
-  ['phone1', 'phone2'], // optional
+  ['email1', 'email2'], // or null
+  ['phone1', 'phone2'], // or null
   'clientIpAddress',
   'clientUserAgent',
-  'fbp',
-  'fpc',
+  'fbp', // or null
+  'fpc', // or null
   'debug', // default to false
 );
 ```

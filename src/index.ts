@@ -1,14 +1,14 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-const bizSdk = require('facebook-nodejs-business-sdk');
+import bizSdk from 'facebook-nodejs-business-sdk';
 
 class FacebookConversionAPI {
   accessToken: string;
 
   pixelId: string;
 
-  fbp: string;
+  fbp: string | null;
 
-  fbc: string;
+  fbc: string | null;
 
   userData: any;
 
@@ -32,7 +32,7 @@ class FacebookConversionAPI {
   constructor(
     accessToken: string, pixelId: string, emails: Array<string>|null,
     phones: Array<string>|null, clientIpAddress: string, clientUserAgent: string,
-    fbp: string, fbc: string, debug: boolean = false,
+    fbp: string | null, fbc: string | null, debug: boolean = false,
   ) {
     this.accessToken = accessToken;
     this.pixelId = pixelId;

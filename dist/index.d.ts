@@ -2,8 +2,8 @@ declare class FacebookConversionAPI {
     #private;
     accessToken: string;
     pixelId: string;
-    fbp: string;
-    fbc: string;
+    fbp: string | null;
+    fbc: string | null;
     userData: any;
     contents: any;
     debug: boolean;
@@ -20,7 +20,7 @@ declare class FacebookConversionAPI {
      * @param fbc
      * @param debug
      */
-    constructor(accessToken: string, pixelId: string, emails: Array<string> | null, phones: Array<string> | null, clientIpAddress: string, clientUserAgent: string, fbp: string, fbc: string, debug?: boolean);
+    constructor(accessToken: string, pixelId: string, emails: Array<string> | null, phones: Array<string> | null, clientIpAddress: string, clientUserAgent: string, fbp: string | null, fbc: string | null, debug?: boolean);
     /**
      * Add product to contents array.
      *
