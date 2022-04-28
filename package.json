@@ -1,11 +1,14 @@
 {
   "name": "@rivercode/facebook-conversion-api",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Facebook Conversion API Wrapper for Node.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint . --ext .ts",
+    "lint:tsc": "tsc",
+    "watch": "tsc --watch",
+    "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +22,7 @@
   },
   "homepage": "https://github.com/RivercodeAB/facebook-conversion-api#readme",
   "dependencies": {
-    "facebook-nodejs-business-sdk": "^11.0.0"
+    "facebook-nodejs-business-sdk": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.7.1",
